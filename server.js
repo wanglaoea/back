@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: ['https://front-b6xv618v8-huxla.vercel.app'],
+    origin: ['https://front-huxla.vercel.app'],
     methods: ['POST']
 }));
 
