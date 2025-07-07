@@ -35,8 +35,8 @@ app.post('/generate', async (req, res) => {
 
         console.log(`[${new Date().toISOString()}] Topic diterima: ${ Topic }`);
 
-        const prompt = `Tolong tulis sebuah artikel sepanjang sekitar 500 kata berdasarkan topik berikut: ${ Topic }
-
+        const prompt = `Tulis artikel sepanjang 500 kata dengan nada santai, gaya storytelling ringan dan clickbait friendly. Optimalkan untuk SEO dengan menyertakan kata kunci ${ Topic }
+        
                         Instruksi gaya penulisan:
                         - Gunakan kalimat pendek, jelas, dan langsung ke intinya.
                         - Tulis dalam bentuk aktif, bukan pasif.
@@ -58,7 +58,7 @@ app.post('/generate', async (req, res) => {
                         - Susunan dan struktur artikel tidak perlu mengikuti template baku — susunlah secara alami agar nyaman dibaca.
                         
                         Tujuan akhir:
-                        Hasilkan artikel yang informatif, enak dibaca, terasa ditulis oleh manusia, dan bebas dari gaya clickbait. Fokus pada kejelasan, kegunaan, dan pengalaman membaca.`;
+                        Hasilkan artikel yang informatif, enak dibaca, terasa ditulis oleh manusia, dan bebas dari gaya clickbait. Fokus pada kejelasan, kegunaan, dan pengalaman membaca.`
 
 
         console.log(`[${new Date().toISOString()}] Mengirim prompt ke OpenAI`);
