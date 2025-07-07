@@ -35,7 +35,7 @@ app.post('/generate', async (req, res) => {
 
         console.log(`[${new Date().toISOString()}] Topic diterima: ${ Topic }`);
 
-        const prompt = `Tolong tulis sebuah artikel sepanjang sekitar 700 kata berdasarkan topik berikut: ${ Topic }
+        const prompt = `Tolong tulis sebuah artikel sepanjang sekitar 500 kata berdasarkan topik berikut: ${ Topic }
 
                         Instruksi gaya penulisan:
                         - Gunakan kalimat pendek, jelas, dan langsung ke intinya.
