@@ -63,7 +63,7 @@ app.post('/generate', async (req, res) => {
 
         console.log(`[${new Date().toISOString()}] Mengirim prompt ke OpenAI`);
         const response = await openai.chat.completions.create({
-            model: "o3-mini",
+            model: "gpt-4.1",
                 messages: [{ role: "user", 
                             content: prompt }]
         });
