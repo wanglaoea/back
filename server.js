@@ -35,7 +35,7 @@ app.post('/generate', async (req, res) => {
 
         console.log(`[${new Date().toISOString()}] Topic diterima: "${Topic}"`);
 
-        const prompt = `Tulis artikel sepanjang ±500 kata dengan gaya santai, storytelling ringan, dan tetap menarik untuk pembaca online. Optimalkan untuk SEO menggunakan kata kunci "${Topic}". Artikel harus informatif, mengalir alami, dan terasa ditulis oleh manusia.
+        const prompt = `Tulis artikel sepanjang ±600 kata dengan gaya santai, storytelling ringan, dan tetap menarik untuk pembaca online. Optimalkan untuk SEO menggunakan kata kunci "${Topic}". Artikel harus informatif, mengalir alami, dan terasa ditulis oleh manusia.
 
                         Struktur Artikel (boleh fleksibel, tapi tetap mengalir):
                         
@@ -79,7 +79,7 @@ app.post('/generate', async (req, res) => {
 
         console.log(`[${new Date().toISOString()}] Mengirim prompt ke OpenAI`);
         const response = await openai.chat.completions.create({
-            model: "gpt-4o",
+            model: "o3-mini",
                 messages: [{ role: "user", 
                             content: prompt }]
         });
