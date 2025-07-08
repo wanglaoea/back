@@ -35,8 +35,9 @@ app.post('/generate', async (req, res) => {
         console.log(`[${new Date().toISOString()}] keyword diterima: ${keyword}`);
 
         const prompt =`
-            Tulis artikel SEO minimal 1000 kata tentang ${keyword} Dengan Struktur HTML. Buatlah Judul artikel seunik mungkin, Artikel harus informatif, engaging, dan menarik. Ubah kata Slot menjadi Game!!!
-                OUTPUT ARTIKEL:
+            Tulis artikel SEO minimal 1000 kata tentang ${keyword} Dengan Struktur HTML. Buatlah Judul artikel seunik mungkin, Artikel harus                    informatif, engaging, dan menarik. Ubah kata Slot menjadi Game!!!
+                
+                    OUTPUT ARTIKEL:
                     <h1>Judul Utama</h1>
                     <p>Paragraf</p>
                     <h2>Subjudul</h2>
@@ -56,7 +57,23 @@ app.post('/generate', async (req, res) => {
                     <h2>Subjudul</h2>
                     <p>Paragraf</p>
                     <h2>Kesimpulan</h2>
-                    <p>Paragraf</p>`;
+                    <p>Paragraf</p>
+
+                        Catatan Penting (Larangan):
+                        
+                        Hindari frasa klise seperti:
+                        “Sebagai kesimpulan”, “Perlu dicatat bahwa”, “Tentunya”, “Menguak”, “Rahasia”, “Slot”, “Oleh karena itu”, “Artikel ini”
+                        
+                        Jangan gunakan emoji, hashtag, titik koma (;) atau titik dua (:) dalam judul.
+                        
+                        Gunakan format HTML agar bisa langsung dirender di web.
+                        
+                        Tujuan Akhir:
+                        Hasilkan artikel yang:
+                        - Ringan, enak dibaca, dan punya ritme alami
+                        - Mengedukasi sambil menghibur
+                        - SEO-friendly tapi tidak terkesan dipaksakan
+                        - Menghindari gaya clickbait murahan, lebih fokus ke kejelasan, insight, dan kenyamanan pembaca.`;
 
         console.log(`[${new Date().toISOString()}] Mengirim prompt ke OpenAI...`);
         const response = await openai.chat.completions.create({
