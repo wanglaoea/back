@@ -67,8 +67,6 @@ app.post('/generate', async (req, res) => {
                         
                         Jangan gunakan emoji, hashtag, titik koma (;) atau titik dua (:) dalam judul.
                         
-                        Gunakan format HTML agar bisa langsung dirender di web.
-                        
                         Tujuan Akhir:
                         Hasilkan artikel yang:
                         - Ringan, enak dibaca, dan punya ritme alami
