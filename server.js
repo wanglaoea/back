@@ -35,30 +35,46 @@ app.post('/generate', async (req, res) => {
 
         console.log(`[${new Date().toISOString()}] Topic diterima: ${ Topic }`);
 
-        const prompt = `Tulis artikel sepanjang 500 kata dengan nada santai, gaya storytelling ringan dan clickbait friendly. Optimalkan untuk SEO dengan menyertakan kata kunci ${ Topic }
-        
-                        Instruksi gaya penulisan:
-                        - Gunakan kalimat pendek, jelas, dan langsung ke intinya.
-                        - Tulis dalam bentuk aktif, bukan pasif.
-                        - Hindari kata sifat atau keterangan yang berlebihan.
-                        - Gunakan bahasa natural dan profesional, seolah berbicara langsung kepada pembaca (gunakan “Anda”).
-                        - Jika perlu, gunakan subjudul, paragraf singkat, atau daftar untuk membantu pembaca memahami isi.
-                        - Sertakan contoh nyata atau data jika relevan dan berguna.
-                        - Ajak pembaca berpikir dengan pertanyaan reflektif jika cocok dengan konteks.
+        const prompt = `Tulis artikel sepanjang ±500 kata dengan gaya santai, storytelling ringan, dan tetap menarik untuk pembaca online. Optimalkan untuk SEO menggunakan kata kunci "${Topic}". Artikel harus informatif, mengalir alami, dan terasa ditulis oleh manusia.
+
+                        Struktur Artikel (boleh fleksibel, tapi tetap mengalir):
                         
-                        Larangan penulisan:
-                        - Jangan gunakan frasa seperti:
-                          “Sebagai kesimpulan…”, “Perlu dicatat bahwa…”, “Tentunya…”, “Mengungkap…”, “Menguak…”, “Rahasia…”, “Slot…”, “Oleh karena itu…” “Artikel ini…”,
-                        - Jangan gunakan emoji, hashtag, tanda titik koma (;)
-                        - Jangan gunakan tanda titik dua (:) di dalam judul
+                        <h1>Judul Utama Artikel yang Menarik dan Relevan</h1> <!-- 150–200 kata -->
+                        <p>Ceritakan pengalaman pribadi atau fiktif yang relatable seputar topik.</p>
+                        <p>Ulas hasil atau sensasi yang muncul dari permainan yang direkomendasikan.</p>
                         
-                        Format keluaran:
-                        - Tulis dalam format HTML agar bisa dirender langsung di halaman web
-                        - Gunakan tag <h1> untuk judul utama, <h2> untuk subjudul, <p> untuk paragraf, dan <ul><li> untuk daftar jika relevan
-                        - Susunan dan struktur artikel tidak perlu mengikuti template baku — susunlah secara alami agar nyaman dibaca.
+                        <h2>Subjudul Unik dan Subjektif Tentang Topik</h2> <!-- 150–200 kata -->
+                        <p>Jelaskan game secara ringan: tema, tampilan, dan fitur khasnya.</p>
+                        <p>Alasan kenapa game ini banyak dicari dan digemari pemain.</p>
                         
-                        Tujuan akhir:
-                        Hasilkan artikel yang informatif, enak dibaca, terasa ditulis oleh manusia, dan bebas dari gaya clickbait. Fokus pada kejelasan, kegunaan, dan pengalaman membaca.`
+                        <h2>Detail Permainan yang Direkomendasikan</h2> <!-- 150–200 kata -->
+                        <p>Bahas simbol scatter hitam dan efeknya saat muncul di dalam game.</p>
+                        <p>Kenapa simbol ini bisa memicu mega jackpot atau free spin?</p>
+                        
+                        <h2>Hasil Keuntungan dan Strategi Main</h2> <!-- 250–300 kata -->
+                        <p>Bagikan tips main berdasarkan pengalaman atau pola yang diamati.</p>
+                        <p>Ulas waktu gacor, pola bet, cara jaga saldo agar tahan lama.</p>
+                        <p>Strategi memadukan scatter, wild, dan pentingnya sabar saat spin.</p>
+                        
+                        <h2>Penutup Ringan dengan Ajakan</h2> <!-- 150–200 kata -->
+                        <p>Ringkas manfaat dan potensi cuan dari topik.</p>
+                        <p>Tutup dengan ajakan santai untuk mencoba — jangan hard-sell, boleh diselipkan candaan ringan atau kalimat yang menggugah rasa penasaran.</p>
+                        
+                        Catatan Penting (Larangan):
+                        
+                        Hindari frasa klise seperti:
+                        “Sebagai kesimpulan”, “Perlu dicatat bahwa”, “Tentunya”, “Menguak”, “Rahasia”, “Slot”, “Oleh karena itu”, “Artikel ini”
+                        
+                        Jangan gunakan emoji, hashtag, titik koma (;) atau titik dua (:) dalam judul.
+                        
+                        Gunakan format HTML agar bisa langsung dirender di web.
+                        
+                        Tujuan Akhir:
+                        Hasilkan artikel yang:
+                        - Ringan, enak dibaca, dan punya ritme alami
+                        - Mengedukasi sambil menghibur
+                        - SEO-friendly tapi tidak terkesan dipaksakan
+                        - Menghindari gaya clickbait murahan, lebih fokus ke kejelasan, insight, dan kenyamanan pembaca.`;
 
 
         console.log(`[${new Date().toISOString()}] Mengirim prompt ke OpenAI`);
