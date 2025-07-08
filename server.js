@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: ['https://frontend-huxla.vercel.app'],
+    origin: ['https://idola.vercel.app'],
     methods: ['POST']
 }));
 
