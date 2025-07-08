@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const OpenAI = require('openai');
-const app = express();
 
+const app = express();
 app.use(express.json());
 
 app.use(cors({
@@ -11,100 +11,107 @@ app.use(cors({
     methods: ['POST']
 }));
 
-const apiKey = process.env.OPENAI_API_KEY;
+const api_key = process.env.OPENAI_API_KEY;
 
-if (!apiKey) {
+if (!api_key) {
     console.error("ERROR: OPENAI_API_KEY tidak ditemukan di .env!");
     process.exit(1);
 }
-const openai = new OpenAI({ apiKey });
+
+const openai = new OpenAI({ apiKey: api_key });
 
 app.post('/generate', async (req, res) => {
     try {
         let { keyword } = req.body;
-        
+
         if (!keyword || typeof keyword !== "string") {
             return res.status(400).json({ error: "keyword harus berupa teks!" });
         }
+
         keyword = keyword.trim();
-        
+
         if (keyword.length > 200) {
             return res.status(400).json({ error: "keyword terlalu panjang! Maksimal 200 karakter." });
         }
 
-        console.log(`[${new Date().toISOString()}] keyword diterima: ${keyword}`);
+        console.log(`[${new Date().toISOString()}] Keyword diterima: ${keyword}`);
 
-        const prompt =`
-            Tulis artikel SEO minimal 1000 kata tentang ${keyword} Dengan Struktur HTML. Buatlah Judul artikel seunik mungkin, Artikel harus                    informatif, engaging, dan menarik. Ubah kata Slot menjadi Game!!!
-                
-                    OUTPUT ARTIKEL:
-                    <h1>Judul Utama</h1>
-                    <p>Paragraf</p>
-                    <h2>Subjudul</h2>
-                    <p>Paragraf</p>
-                    <h2>Subjudul</h2>
-                    <p>Paragraf</p>
-                    <h2>Subjudul</h2>
-                    <p>Paragraf</p>
-                    <h2>Subjudul</h2>
-                    <p>Paragraf</p>
-                    <h2>Subjudul</h2>
-                    <p>Paragraf</p>
-                    <h2>Subjudul</h2>
-                    <p>Paragraf</p>
-                    <h2>Subjudul</h2>
-                    <p>Paragraf</p>
-                    <h2>Subjudul</h2>
-                    <p>Paragraf</p>
-                    <h2>Kesimpulan</h2>
-                    <p>Paragraf</p>
+        const prompt = `
+Tulis artikel SEO minimal 1000 kata tentang ${keyword} Dengan Struktur HTML. Buatlah Judul artikel seunik mungkin, Artikel harus informatif, engaging, dan menarik. Ubah kata Slot menjadi Game!!!
 
-                        Catatan Penting (Larangan):
-                        
-                        Hindari frasa klise seperti:
-                        “Sebagai kesimpulan”, “Perlu dicatat bahwa”, “Tentunya”, “Menguak”, “Rahasia”, “Slot”, “Oleh karena itu”, “Artikel ini”
-                        
-                        Jangan gunakan emoji, hashtag, titik koma (;) atau titik dua (:) dalam judul.
-                        
-                        Gunakan format HTML agar bisa langsung dirender di web.
-                        
-                        Tujuan Akhir:
-                        Hasilkan artikel yang:
-                        - Ringan, enak dibaca, dan punya ritme alami
-                        - Mengedukasi sambil menghibur
-                        - SEO-friendly tapi tidak terkesan dipaksakan
-                        - Menghindari gaya clickbait murahan, lebih fokus ke kejelasan, insight, dan kenyamanan pembaca.`;
+OUTPUT ARTIKEL:
+<h1>Judul Utama</h1>
+<p>Paragraf</p>
+<h2>Subjudul</h2>
+<p>Paragraf</p>
+<h2>Subjudul</h2>
+<p>Paragraf</p>
+<h2>Subjudul</h2>
+<p>Paragraf</p>
+<h2>Subjudul</h2>
+<p>Paragraf</p>
+<h2>Subjudul</h2>
+<p>Paragraf</p>
+<h2>Subjudul</h2>
+<p>Paragraf</p>
+<h2>Subjudul</h2>
+<p>Paragraf</p>
+<h2>Subjudul</h2>
+<p>Paragraf</p>
+<h2>Kesimpulan</h2>
+<p>Paragraf</p>
+
+Catatan Penting (Larangan):
+
+Hindari frasa klise seperti:
+“Sebagai kesimpulan”, “Perlu dicatat bahwa”, “Tentunya”, “Menguak”, “Rahasia”, “Slot”, “Oleh karena itu”, “Artikel ini”
+
+Jangan gunakan emoji, hashtag, titik koma (;) atau titik dua (:) dalam judul.
+
+Gunakan format HTML agar bisa langsung dirender di web.
+
+Tujuan Akhir:
+Hasilkan artikel yang:
+- Ringan, enak dibaca, dan punya ritme alami
+- Mengedukasi sambil menghibur
+- SEO-friendly tapi tidak terkesan dipaksakan
+- Menghindari gaya clickbait murahan, lebih fokus ke kejelasan, insight, dan kenyamanan pembaca.
+`;
 
         console.log(`[${new Date().toISOString()}] Mengirim prompt ke OpenAI...`);
+
         const response = await openai.chat.completions.create({
             model: "o4-mini",
-                   messages: [{ role: "user", 
-                        content: prompt }]
+            messages: [
+                { role: "user", content: prompt }
+            ]
         });
 
         if (!response.choices || !response.choices[0] || !response.choices[0].message.content) {
             throw new Error("OpenAI API tidak mengembalikan hasil yang valid.");
         }
 
-        let htmlArticle = response.choices[0].message.content;
-        htmlArticle = htmlArticle.replace(/```html|```/g, "").trim();
+        let html_article = response.choices[0].message.content;
+        html_article = html_article.replace(/```html|```/g, "").trim();
 
-        console.log(`[${new Date().toISOString()}] Artikel berhasil dibuat, panjang karakter: ${htmlArticle.length}`);
+        console.log(`[${new Date().toISOString()}] Artikel berhasil dibuat, panjang karakter: ${html_article.length}`);
 
-        res.json({ text: htmlArticle });
+        res.json({ text: html_article });
 
     } catch (error) {
         console.error(`[${new Date().toISOString()}] Error OpenAI API:`, error.response ? error.response.data : error.message);
 
-        let errorMessage = "Terjadi kesalahan saat membuat artikel.";
+        let error_message = "Terjadi kesalahan saat membuat artikel.";
 
         if (error.response && error.response.status === 429) {
-            errorMessage = "Terlalu banyak permintaan ke OpenAI API. Silakan coba lagi nanti.";
+            error_message = "Terlalu banyak permintaan ke OpenAI API. Silakan coba lagi nanti.";
         }
 
-        res.status(500).json({ error: errorMessage });
+        res.status(500).json({ error: error_message });
     }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`[${new Date().toISOString()}] Backend berjalan di port ${PORT}`));
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log(`[${new Date().toISOString()}] Backend berjalan di port ${port}`);
+});
