@@ -33,7 +33,7 @@ app.post('/generate', async (req, res) => {
             return res.status(400).json({ error: "!Maksimal 4000 karakter." });
         }
 
-        console.log(`[${new Date().toISOString()}] Topic diterima: ${ Topic }`);
+        console.log(`[${new Date().toISOString()}] Topic diterima: "${Topic}"`);
 
         const prompt = `Tulis artikel sepanjang ±500 kata dengan gaya santai, storytelling ringan, dan tetap menarik untuk pembaca online. Optimalkan untuk SEO menggunakan kata kunci "${Topic}". Artikel harus informatif, mengalir alami, dan terasa ditulis oleh manusia.
 
