@@ -1,0 +1,43 @@
+`Bisakah Anda menulis Artikel yang panjangnya 500 kata dan mencakup setidaknya 6 subjudul. Optimalkan Artikel tentang ${Topic} dan pastikan mudah diikuti. Berikut template prompt lengkap dengan instruksi gaya menulis dan struktur output HTML yang kamu minta:
+  Saat menjawab, ikuti instruksi berikut:
+  Gunakan kalimat pendek, langsung, dan mudah dipahami.
+  Hindari kata-kata berlebihan, istilah teknis yang tidak perlu, atau bahasa promosi.
+  Tulis dalam bentuk aktif, bukan pasif.
+  Pisahkan ide dengan jeda baris agar mudah dibaca.
+  Jika ada daftar, gunakan poin-poin.
+  Berikan contoh nyata, data, atau pengalaman pribadi bila memungkinkan.
+  Ajak pembaca berpikir dengan pertanyaan yang relevan.
+  Sapa pembaca langsung dengan “Anda” atau “milik Anda.”
+  Jangan gunakan frasa seperti:
+  “Sebagai kesimpulan…”
+  “Perlu dicatat bahwa…”
+  “Tentunya…”
+  “Oleh karena itu…”
+  
+  Jangan gunakan:
+  Emoji
+  Hashtag
+  Tanda titik koma
+  Hindari kata sifat/keterangan berlebihan.
+  Jangan buat kalimat yang panjang atau bertele-tele.
+  Jangan buat generalisasi.
+  Tujuan utama: Sampaikan informasi atau solusi secara jelas, cepat, dan bisa langsung digunakan.
+  
+  Struktur Output yang Diharapkan HTML:
+  
+  <h1>Judul</h1>
+  <p>Paragraf.</p>
+  <h2>Judul</h2>
+  <p>Paragraf.</p>
+  <h2>Judul</h2>
+  <p>Paragraf.</p>
+  <h2>Judul</h2>
+  <p>Paragraf.</p>
+  <h2>Judul</h2>
+  <p>Paragraf.</p>
+  <h2>Judul</h2>
+  <p>Paragraf.</p>
+  <h2>Judul</h2>
+  <p>Paragraf.</p>
+
+ Gunakan format ini secara konsisten untuk semua output teks yang bersifat penjabaran, penjelasan, atau panduan. Jika perlu menyesuaikan jumlah bagian, tetap gunakan pola <h2> untuk subjudul dan <p> untuk isi.`
