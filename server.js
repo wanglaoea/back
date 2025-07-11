@@ -35,44 +35,48 @@ app.post('/generate', async (req, res) => {
 
         console.log(`[${new Date().toISOString()}] Topic diterima: "${Topic}"`);
 
-        const prompt = `Tulis artikel sepanjang ±600 kata dengan gaya santai, storytelling ringan, dan tetap menarik untuk pembaca online. Optimalkan untuk SEO menggunakan kata kunci "${Topic}". Artikel harus informatif, mengalir alami, dan terasa ditulis oleh manusia.
+        const prompt = `Bisakah Anda menulis Artikel yang panjangnya 500 kata dan mencakup setidaknya 6 subjudul. Optimalkan Artikel tentang ${Topic} dan pastikan mudah diikuti. Berikut template prompt lengkap dengan instruksi gaya menulis dan struktur output HTML yang kamu minta:
+                          Saat menjawab, ikuti instruksi berikut:
+                          Gunakan kalimat pendek, langsung, dan mudah dipahami.
+                          Hindari kata-kata berlebihan, istilah teknis yang tidak perlu, atau bahasa promosi.
+                          Tulis dalam bentuk aktif, bukan pasif.
+                          Pisahkan ide dengan jeda baris agar mudah dibaca.
+                          Jika ada daftar, gunakan poin-poin.
+                          Berikan contoh nyata, data, atau pengalaman pribadi bila memungkinkan.
+                          Ajak pembaca berpikir dengan pertanyaan yang relevan.
+                          Sapa pembaca langsung dengan “Anda” atau “milik Anda.”
+                          Jangan gunakan frasa seperti:
+                          “Sebagai kesimpulan…”
+                          “Perlu dicatat bahwa…”
+                          “Tentunya…”
+                          “Oleh karena itu…”
+                          
+                          Jangan gunakan:
+                          Emoji
+                          Hashtag
+                          Tanda titik koma
+                          Hindari kata sifat/keterangan berlebihan.
+                          Jangan buat kalimat yang panjang atau bertele-tele.
+                          Jangan buat generalisasi.
+                          Tujuan utama: Sampaikan informasi atau solusi secara jelas, cepat, dan bisa langsung digunakan.
+                          
+                          Struktur Output yang Diharapkan HTML:
+                          <h1>Judul</h1>
+                          <p>Paragraf.</p>
+                          <h2>Judul</h2>
+                          <p>Paragraf.</p>
+                          <h2>Judul</h2>
+                          <p>Paragraf.</p>
+                          <h2>Judul</h2>
+                          <p>Paragraf.</p>
+                          <h2>Judul</h2>
+                          <p>Paragraf.</p>
+                          <h2>Judul</h2>
+                          <p>Paragraf.</p>
+                          <h2>Judul</h2>
+                          <p>Paragraf.</p>
 
-                        Struktur Artikel (boleh fleksibel, tapi tetap mengalir):
-                        
-                        <h1>Judul Utama Artikel yang Menarik dan Relevan</h1> <!-- 150–200 kata -->
-                        <p>Ceritakan pengalaman pribadi atau fiktif yang relatable seputar topik.</p>
-                        <p>Ulas hasil atau sensasi yang muncul dari permainan yang direkomendasikan.</p>
-                        
-                        <h2>Subjudul Unik dan Subjektif Tentang Topik</h2> <!-- 150–200 kata -->
-                        <p>Jelaskan game secara ringan: tema, tampilan, dan fitur khasnya.</p>
-                        <p>Alasan kenapa game ini banyak dicari dan digemari pemain.</p>
-                        
-                        <h2>Detail Permainan yang Direkomendasikan</h2> <!-- 150–200 kata -->
-                        <p>Bahas simbol scatter hitam dan efeknya saat muncul di dalam game.</p>
-                        <p>Kenapa simbol ini bisa memicu mega jackpot atau free spin?</p>
-                        
-                        <h2>Hasil Keuntungan dan Strategi Main</h2> <!-- 250–300 kata -->
-                        <p>Bagikan tips main berdasarkan pengalaman atau pola yang diamati.</p>
-                        <p>Ulas waktu gacor, pola bet, cara jaga saldo agar tahan lama.</p>
-                        <p>Strategi memadukan scatter, wild, dan pentingnya sabar saat spin.</p>
-                        
-                        <h2>Penutup Ringan dengan Ajakan</h2> <!-- 150–200 kata -->
-                        <p>Ringkas manfaat dan potensi cuan dari topik.</p>
-                        <p>Tutup dengan ajakan santai untuk mencoba — jangan hard-sell, boleh diselipkan candaan ringan atau kalimat yang menggugah rasa penasaran.</p>
-                        
-                        Catatan Penting (Larangan):
-                        
-                        Hindari frasa klise seperti:
-                        “Sebagai kesimpulan”, “Perlu dicatat bahwa”, “Tentunya”, “Menguak”, “Rahasia”, “Slot”, “Oleh karena itu”, “Artikel ini”
-                        
-                        Jangan gunakan emoji, hashtag, titik koma (;) atau titik dua (:) dalam judul.
-                        
-                        Tujuan Akhir:
-                        Hasilkan artikel yang:
-                        - Ringan, enak dibaca, dan punya ritme alami
-                        - Mengedukasi sambil menghibur
-                        - SEO-friendly tapi tidak terkesan dipaksakan
-                        - Menghindari gaya clickbait murahan, lebih fokus ke kejelasan, insight, dan kenyamanan pembaca.`;
+                         Gunakan format ini secara konsisten untuk semua output teks yang bersifat penjabaran, penjelasan, atau panduan. Jika perlu menyesuaikan jumlah bagian, tetap gunakan pola <h2> untuk subjudul dan <p> untuk isi.`;
 
 
         console.log(`[${new Date().toISOString()}] Mengirim prompt ke OpenAI`);
